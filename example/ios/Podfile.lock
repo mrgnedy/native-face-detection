@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+  - native_face_detection (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - native_face_detection (from `.symlinks/plugins/native_face_detection/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  native_face_detection:
+    :path: ".symlinks/plugins/native_face_detection/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+  native_face_detection: bf4c44d62f71f4e2535bde86c217c1d84a866b91
+
+PODFILE CHECKSUM: 7bb08e8bd89bec0588bdb44b8f8bbb6ec0b86ee0
+
+COCOAPODS: 1.13.0

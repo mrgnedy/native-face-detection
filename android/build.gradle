@@ -1,0 +1,97 @@
+group 'com.skinnyg.native_face_detection'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.7.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+
+apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.skinnyg.native_face_detection'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+
+    dependencies {
+        testImplementation 'org.jetbrains.kotlin:kotlin-test'
+        testImplementation 'org.mockito:mockito-core:5.0.0'
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+ext.versions = [
+        'lifecycle': '2.2.0',
+        'koin'     : '2.0.1',
+        'cameraX'  : '1.4.0-alpha03',
+]
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    api "androidx.camera:camera-camera2:${versions.cameraX}"
+//    implementation 'com.google.mlkit:vision-common:17.3.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.camera:camera-lifecycle:${versions.cameraX}"
+    implementation "androidx.camera:camera-view:${versions.cameraX}"
+    implementation "androidx.camera:camera-core:${versions.cameraX}"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+}
